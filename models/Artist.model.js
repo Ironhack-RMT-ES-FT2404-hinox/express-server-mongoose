@@ -13,10 +13,15 @@ const artistSchema = new mongoose.Schema({
     default: 0 // valor predeterminado en caso que el cliente no lo entregue
   },
   isTouring: Boolean,
-  genre: [{
-    type: String,
+  genre: {
+    type: [String],
     enum: ["rock", "alternative", "pop", "metal", "country", "jazz"] // estos son los unicos posibles valores de esta propiedad
-  }]
+  },
+  collaborator:
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Artist"
+    }
 })
 
 // creamos el modelo => la manito que nos permitirá ir a la BD (colección de artistas)
